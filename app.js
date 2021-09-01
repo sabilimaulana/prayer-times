@@ -3,7 +3,7 @@ const getPrayerTimes = async (latitude, longitude) => {
     `http://api.aladhan.com/v1/calendar?latitude=${latitude}&longitude=${longitude}&method=2`
   )
     .then((response) => response.json())
-    .then((response) => console.log(response));
+    .then((response) => console.log(response.data[new Date().getDate() - 1]));
 };
 
 const success = (position) => {
