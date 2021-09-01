@@ -3,7 +3,28 @@ const getPrayerTimes = async (latitude, longitude) => {
     `http://api.aladhan.com/v1/calendar?latitude=${latitude}&longitude=${longitude}&method=2`
   )
     .then((response) => response.json())
-    .then((response) => console.log(response.data[new Date().getDate() - 1]));
+    .then((response) => {
+      const data = response.data[new Date().getDate() - 1].timings;
+
+      const app = document.getElementById("app");
+      const table = document.createElement("table");
+      const tableTBody = document.createElement("tbody");
+
+      for (i in data) {
+        const row = tableTBody.insertRow();
+        const name = row.insertCell(0);
+        const time = row.insertCell(1);
+
+        name.innerHTML = i;
+        time.innerHTML = data[i];
+        tableTBody.appendChild(row);
+      }
+
+      table.appendChild(tableTBody);
+      app.appendChild(table);
+
+      console.log(data);
+    });
 };
 
 const success = (position) => {
