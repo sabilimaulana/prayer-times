@@ -23,7 +23,11 @@ const getPrayerTimes = async (latitude, longitude) => {
       table.appendChild(tableTBody);
       app.appendChild(table);
 
-      console.log(data);
+      // Info
+      const info = document.createElement("i");
+      info.innerHTML =
+        "Jika kamu tidak mengizinkan akses lokasi, maka akan menggunakan lokasi Jakarta";
+      app.appendChild(info);
     });
 };
 
