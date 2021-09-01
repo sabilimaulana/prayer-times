@@ -1,5 +1,14 @@
+const getPrayerTimes = async (latitude, longitude) => {
+  fetch(
+    `http://api.aladhan.com/v1/calendar?latitude=${latitude}&longitude=${longitude}&method=2`
+  )
+    .then((response) => response.json())
+    .then((response) => console.log(response));
+};
+
 const success = (position) => {
-  console.log(position);
+  const { latitude, longitude } = position.coords;
+  getPrayerTimes(latitude, longitude);
 };
 
 const error = () => {
