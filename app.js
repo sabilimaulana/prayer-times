@@ -33,7 +33,11 @@ const success = (position) => {
 };
 
 const error = () => {
-  alert("Posisi tidak dapat diakses");
+  // Set default latitude and longitude based on Jakarta, Indonesia
+  const latitude = -6.2;
+  const longitude = 106.816666;
+
+  getPrayerTimes(latitude, longitude);
 };
 
 const userLocation = () => {
